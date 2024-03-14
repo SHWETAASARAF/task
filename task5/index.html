@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Island Scen</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('./jcob-nasyr-PItsVmyu34Q-unsplash.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh; /* Ensure background covers entire viewport */
+
+        }
+
+        .island {
+            width: 80%;
+            height: 50%;
+            background: #8B4513; /* Brown color for island */
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .grass {
+            width: 100%;
+            height: 70%;
+            background: #32CD32; /* Green color for grass */
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .tree {
+            width: 20px;
+            height: 40px;
+            background: #8B4513; /* Brown color for tree trunk */
+            position: absolute;
+            bottom: 30%;
+            left: 40%;
+            transform-origin: bottom;
+            transform: translateX(-50%);
+        }
+
+
+        .tree:before,
+        .tree:after {
+            content: '';
+            width: 60px;
+            height: 60px;
+            background: #228B22; /* Green color for tree leaves */
+            border-radius: 50%;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .rock {
+            width: 20px;
+            height: 20px;
+            background: gray; /* Gray color for rocks */
+            border-radius: 50%;
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+        }
+
+
+        .bird {
+            width: 30px;
+            height: 20px;
+            background: #000;
+            position: absolute;
+            top: 10%;
+            left: 70%;
+            animation: moveBird 5s linear infinite;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="island">
+         <div class="grass">
+               <div class="tree"></div>
+               <div class="rock" style="left: 30%;"></div>
+               <div class="rock" style="left: 50%;"></div>
+               <div class="rock" style="left: 70%;"></div>
+   
+         </div>
+    </div>
+    <div class="cloud"></div>
+    <div class="bird"></div>
+
+</body>
+</html>

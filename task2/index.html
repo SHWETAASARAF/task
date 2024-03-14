@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>favorite food</title>
+    <style>
+        .error {
+            color: red;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>Favorite Food Form</h2>
+
+    <form id="favoriteFoodForm" action="#" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required min="18" max="100">
+        </div>
+        <div>
+            <label for="favoriteFood">Favorite Food:</label>
+            <input type="text" id="favoriteFood" name="favoriteFood" required>
+        </div>
+        <div>
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('favoriteFoodForm');
+
+        form.addEventListener('submit', function (event) {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const ageInput = document.getElementById('age');
+            const favoriteFoodInput = document.getElementById('favoriteFood');
+
+            const namePattern = /^[a-zA-Z\s]+$/;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            let errors = [];
+
+            if (!namePattern.test(nameInput.value)) {
+                errors.push('Name must contain only letters and spaces.');
+            }
+
+            if (!emailPattern.test(emailInput.value)) {
+                errors.push('Invalid email address.');
+            }
+
+            if (ageInput.value < 18 || ageInput.value > 100) {
+                errors.push('Age must be between 18 and 100.');
+            }
+
+            if (errors.length > 0) {
+                event.preventDefault();
+                displayErrors(errors);
+            }
+
+            function displayErrors(errors) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.innerHTML = '<h3>Please correct the following errors:</h3>';
+                const ul = document.createElement('ul');
+
+                errors.forEach(function (error) {
+                    const li = document.createElement('li');
+                    li.textContent = error;
+                    ul.appendChild(li);
+                });
+
+                errorDiv.appendChild(ul);
+                form.insertBefore(errorDiv, form.firstChild);
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>
